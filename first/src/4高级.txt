@@ -1,0 +1,28 @@
+webpack 高级
+
+tree shaking
+
+Develoment Production模式区分 打包
+
+
+Develoment 
+//webpack.dev.js
+
+Production
+//webpack.prod.js
+
+
+webpack和code splitting
+
+code splitting代码分割   SplitChunksPlugin
+
+//懒加载
+lasy loading 
+
+chunk
+
+打包分析 Preloading Prefetching
+
+
+//兼容 
+shimming

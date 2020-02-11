@@ -1,0 +1,73 @@
+global全局安装 打包：webpack index.js ,对于低版本的webpack不支持建议局部  
+
+局部安装 打包： npx webpack (找默认webpack.config.js文件  npx webpack --config webpack.config.js)
+
+打包： npm run ***
+
+npm init -y
+npm install webpack webpack-cli -D
+
+
+file-loader  会把图片生成图片文件
+url-loader  会把图片转化成字符串（图片很大 limit 2048 则自动使用 file-loader功能）
+
+
+plugin  可以在webpack运行到某一时刻，帮你做一些事
+
+html-webpack-plugin  打包后自动生成html 并且引入js
+template指定一个html模板
+
+clean-webpack-plugin
+
+
+
+entry :{
+    main:'./src/index.js'
+}
+
+//默认事main.js
+output:{
+ filename:bundle.js//filename是打包后的名字对应output的占位
+ path:path.resolve(__dirname,'dist')
+}
+
+//多个js打包
+entry :{
+    main:'./src/index.js'
+  sub:'./src/sub.js'
+}
+output:{
+    publicPath://每个引入的默认前缀
+ filename:'[name].js'//打包后对应的js
+ path:path.resolve(__dirname,'dist')
+} 
+
+
+souceMap: devtool 
+//开发环境development  cheap-module-eval-source-map
+//production   cheap-module-source-map
+
+devtool:'eval'
+
+devtool:'cheap-module-source-map'  
+
+
+提升效率
+
+//package.json
+script:{
+    "dev":"webpack --watch "//监听文件改变 ctrl+s保存后自动更新  手动刷新
+    "start":"webpack-dev server"//动态改变 自动刷新   webpack.config.js  modlue.exports={devServer:{contentBase:'./dist'} }
+}
+
+
+//webpack代理
+//
+ devServer: {
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
+  }
+
+热模块更新
+  hmr
